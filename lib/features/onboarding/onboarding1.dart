@@ -3,18 +3,49 @@ import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../core/constants.dart';
 import '../../core/styles.dart';
+import '../home/home.dart';
 
-class OnBoarding2 extends StatelessWidget {
-  const OnBoarding2({super.key});
+class OnBoarding1 extends StatefulWidget {
+  const OnBoarding1({super.key});
+
+  @override
+  State<OnBoarding1> createState() => _OnBoarding1State();
+}
+
+class _OnBoarding1State extends State<OnBoarding1> {
+  final _introKey = GlobalKey<IntroductionScreenState>();
+
+  final Map<String, List<String>> onBoardingTexts = <String, List<String>>{
+    'boarding1': [
+      "We Won't Hold Your\nHands Forever",
+      "We teach you the skill of breath, so \nyou can find calm anywhere, with or \nwithout the phone.",
+      'assets/images/abstract_orb_visual.png',
+    ],
+    'boarding2': [
+      "Breathe.\nJust Breathe.",
+      "No streaks. No scores. No pressure. \nSimply exist in the moment.",
+      'assets/images/Aura_Orb_margin.png',
+    ],
+    'boarding3': [
+      "Sound That\nMoves You",
+      "Choose a soundscape. Watch the colors\n shift to match the mood",
+      'assets/images/Central Visualization.png',
+    ],
+  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        // padding: EdgeInsets.all(16),
         decoration: BoxDecoration(gradient: AppColors.backgroundColor),
         child: IntroductionScreen(
+          key: _introKey,
+          showDoneButton: false,
+          showBackButton: false,
+          showNextButton: false,
           globalBackgroundColor: Colors.transparent,
-          dotsDecorator: DotsDecorator(
+          dotsDecorator: .new(
             size: const Size.square(10.0),
             activeSize: const Size(20.0, 10.0),
             activeColor: Color(0xff4211D4),
@@ -24,104 +55,201 @@ class OnBoarding2 extends StatelessWidget {
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
-          showNextButton: true,
-          next: const Text('Next', style: AppStyles.onBoardingButtonStyle),
-          showSkipButton: true,
-          skip: Text('Skipppp', style: AppStyles.onBoardingButtonStyle),
-          showBackButton: true,
-          back: const Text('back', style: AppStyles.onBoardingButtonStyle),
-          showDoneButton: true,
-          done: const Text('Done', style: AppStyles.onBoardingButtonStyle),
-          onDone: () => print('Go to the app.'),
-          pages: [
-            PageViewModel(
-              titleWidget: const Text(
-                "We Won't Hold Your\nHands Forever",
-                style: AppStyles.onBoardingTitleStyle,
-                textAlign: TextAlign.center,
-              ),
-              bodyWidget: const Text(
-                "We teach you the skill of breath, so \nyou can find calm anywhere, with or \nwithout the phone.",
-                style: AppStyles.onBoardingSubTitleStyle,
-                textAlign: TextAlign.center,
-              ),
-              image: Image.asset('assets/images/abstract_orb_visual.png'),
-            ),
-            PageViewModel(
-              titleWidget: const Text(
-                "Breathe.\nJust Breathe.",
-                style: AppStyles.onBoardingTitleStyle,
-                textAlign: TextAlign.center,
-              ),
-              body:
-                  "No streaks. No scores. No pressure. \nSimply exist in the moment.",
-              image: Image.asset('assets/images/Aura_Orb_margin.png'),
-            ),
-            PageViewModel(
-              titleWidget: RichText(
-                text: TextSpan(
-                  text: "Sound That\n",
-                  children: [
-                    TextSpan(
-                      text: "Moves You.",
-                      style: AppStyles.onBoardingTitleStyle.copyWith(
-                        foreground: Paint()
-                          ..shader = AppColors.textGradient.createShader(
-                            Rect.fromLTWH(100, 0, 100, 0),
+          rawPages: [
+            Container(
+              padding: EdgeInsets.all(24),
+              decoration: BoxDecoration(gradient: AppColors.backgroundColor),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Image.asset(onBoardingTexts['boarding1']![2]),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      spacing: 16,
+                      children: [
+                        Text(
+                          onBoardingTexts['boarding1']![0],
+                          style: AppStyles.onBoardingTitleStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          onBoardingTexts['boarding1']![1],
+                          style: AppStyles.onBoardingSubTitleStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                        ElevatedButton(
+                          onPressed: () => _introKey.currentState?.next(),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 20),
                           ),
+                          child: Text(
+                            'Next',
+                            style: TextStyle(
+                              color: Color(0xff4211D4),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(24),
+              decoration: BoxDecoration(gradient: AppColors.backgroundColor),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Image.asset(onBoardingTexts['boarding2']![2]),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      spacing: 16,
+                      children: [
+                        Text(
+                          onBoardingTexts['boarding2']![0],
+                          style: AppStyles.onBoardingTitleStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          onBoardingTexts['boarding2']![1],
+                          style: AppStyles.onBoardingSubTitleStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                        ElevatedButton(
+                          onPressed: () => _introKey.currentState?.next(),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 20),
+                          ),
+                          child: Text(
+                            'Next',
+                            style: TextStyle(
+                              color: Color(0xff4211D4),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(gradient: AppColors.backgroundColor2),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Image.asset(onBoardingTexts['boarding3']![2]),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 24,
+                        right: 24,
+                        bottom: 48,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        spacing: 16,
+                        children: [
+                          Text(
+                            onBoardingTexts['boarding3']![0],
+                            style: AppStyles.onBoardingTitleStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            onBoardingTexts['boarding3']![1],
+                            style: AppStyles.onBoardingSubTitleStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: 20,
+                            children: [
+                              FilterChip(
+                                selected: true,
+                                selectedColor: AppColors.background,
+                                label: Text('Rain'),
+                                avatar: Icon(Icons.water_drop_outlined,color: Color(0xffA7F3D0),),
+                                onSelected: null,
+                                labelStyle: TextStyle(color: Color(0xffA7F3D0),),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  side: BorderSide(
+                                    color: Color(0xffA7F3D0).withAlpha(50),
+                                  ),
+                                ),
+                              ),
+                              FilterChip(
+                                padding: EdgeInsets.all(10),
+                                avatar: Icon(
+                                  Icons.forest_outlined,
+                                  color: Color(0xffA7F3D0),
+                                ),
+                                selected: true,
+                                selectedColor: AppColors.background,
+                                label: Text('Forest'),
+                                onSelected: null,
+                                labelStyle: TextStyle(color: Color(0xffA7F3D0)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  side: BorderSide(
+                                    color: Color(0xffA7F3D0).withAlpha(50),
+                                  ),
+                                ),
+                              ),
+                              FilterChip(
+                                selected: true,
+                                selectedColor: AppColors.background,
+                                label: Text('River'),
+                                avatar: Icon(
+                                  Icons.waves_outlined,
+                                  color: Color(0xffA7F3D0),
+                                ),
+                                onSelected: null,
+                                labelStyle: TextStyle(color: Color(0xffA7F3D0)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  side: BorderSide(
+                                    color: Color(0xffA7F3D0).withAlpha(50),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (ctx)=>MainPage())),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                            ),
+                            child: Text(
+                              'Enter the Sanctuary',
+                              style: TextStyle(
+                                color: Color(0xff4211D4),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                  style: AppStyles.onBoardingTitleStyle,
-                ),
-                textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              body:
-                  "No streaks. No scores. No pressure. \nSimply exist in the moment.",
-              image: Image.asset('assets/images/Central Visualization.png'),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class Onboarding1 extends StatelessWidget {
-  const Onboarding1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: AppColors.backgroundColor,
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.backgroundColor),
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    SizedBox(height: 50),
-                    Image.asset('assets/images/abstract_orb_visual.png'),
-                  ],
-                ),
-              ),
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      'We won\'t hold your hands forever',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

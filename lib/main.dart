@@ -13,7 +13,7 @@ class MindYourBreath extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: MindYourBreath(),
-      home: OnBoarding2(),
+      home: OnBoarding1(),
     );
   }
 }

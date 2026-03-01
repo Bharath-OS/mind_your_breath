@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/mind_your_breath.iml" filepath="$PROJECT_DIR$/.idea/mind_your_breath.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/mind_your_breath_android.iml" filepath="$PROJECT_DIR$/android/mind_your_breath_android.iml" />
     </modules>
   </component>
 </project>
