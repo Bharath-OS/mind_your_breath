@@ -58,7 +58,9 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                 ),
-                SizedBox(),
+                SizedBox(
+                  child: Text('05:00')
+                ),
               ],
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:mind_your_breath/features/authentication/views/register.dart';
 
 import '../../core/constants.dart';
 import '../../core/styles.dart';
@@ -229,7 +230,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
                             ],
                           ),
                           ElevatedButton(
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (ctx)=>MainPage())),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (ctx)=>RegisterScreen())),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(vertical: 20),
                             ),
