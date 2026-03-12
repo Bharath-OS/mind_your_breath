@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mind_your_breath"
+    namespace = "com.mind_your_breath.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.mind_your_breath"
+        applicationId = "com.mind_your_breath.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
